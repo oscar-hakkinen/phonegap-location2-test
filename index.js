@@ -1,5 +1,7 @@
 var watchID;
 
+
+
 var locationOptions = { 
 	maximumAge: 10000, 
 	timeout: 6000, 
@@ -52,9 +54,12 @@ function successPosition(position) {
 	var time = position.timestamp;
 	var latitude = position.coords.latitude;
 	var longitude = position.coords.longitude;
-	
+	var unixtime = new Date(position.timestamp);
+    var date = unixtime.toDateString();
+
+    
 	//OK. Now we want to update the display with the correct values
-	$('#time').val("Recieved data at " + time);
+	$('#time').val(date);
 	$('#lattext').val(latitude);
 	$('#longtext').val(longitude);
 	
@@ -66,3 +71,6 @@ function failPosition(error) {
 	$('#time').val("Error getting data: " + error);
 	
 }
+
+
+
